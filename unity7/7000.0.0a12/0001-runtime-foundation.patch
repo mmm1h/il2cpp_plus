@@ -1,0 +1,44 @@
+--- a/libil2cpp/il2cpp-config.h
++++ b/libil2cpp/il2cpp-config.h
+@@ -3,0 +4,2 @@
++
++#include "hybridclr/Il2CppVersionCompatibleDefs.h"
+--- a/libil2cpp/il2cpp-class-internals.h
++++ b/libil2cpp/il2cpp-class-internals.h
+@@ -220,0 +221,6 @@
++
++    uint8_t initInterpCallMethodPointer : 1;
++    uint8_t isInterpterImpl : 1;
++    void* interpData;
++    Il2CppMethodPointer methodPointerCallByInterp;
++    Il2CppMethodPointer virtualMethodPointerCallByInterp;
+--- a/libil2cpp/vm/GlobalMetadataFileInternals.h
++++ b/libil2cpp/vm/GlobalMetadataFileInternals.h
+@@ -372,0 +373,2 @@
++
++typedef Il2CppCustomAttributeDataRange Il2CppCustomAttributeTypeRange;
+--- a/libil2cpp/vm/Exception.h
++++ b/libil2cpp/vm/Exception.h
+@@ -100,0 +101,4 @@
++        static Il2CppException* GetStackOverflowException(const char* msg);
++        static Il2CppException* GetBadImageFormatException(const char* msg);
++        static Il2CppException* GetMissingFieldException(const char* msg);
++
+--- a/libil2cpp/vm/Exception.cpp
++++ b/libil2cpp/vm/Exception.cpp
+@@ -776,0 +777,15 @@
++    Il2CppException* Exception::GetStackOverflowException(const char* msg)
++    {
++        return FromNameMsg(Image::GetCorlib(), "System", "StackOverflowException", msg);
++    }
++
++    Il2CppException* Exception::GetBadImageFormatException(const char* msg)
++    {
++        return FromNameMsg(Image::GetCorlib(), "System", "BadImageFormatException", msg);
++    }
++
++    Il2CppException* Exception::GetMissingFieldException(const char* msg)
++    {
++        return FromNameMsg(Image::GetCorlib(), "System", "MissingFieldException", msg);
++    }
++

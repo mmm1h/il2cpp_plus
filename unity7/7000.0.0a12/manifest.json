@@ -1,0 +1,14 @@
+{
+  "unity_version": "7000.0.0a12",
+  "revision": "8751f7c83ed7",
+  "status": "incomplete-source-port",
+  "input_sha256": {
+    "libil2cpp/il2cpp-config.h": "933db656b53574ba579ce080c0756560278ee35b9da2df5a177483f2d5fd334b",
+    "libil2cpp/il2cpp-class-internals.h": "6515d47df3e9d03a0aca7e21c43383329fc5784026ecf7c2dc4538f18f9b6147",
+    "libil2cpp/vm/GlobalMetadataFileInternals.h": "057da27d9821346c0dc63ca50da16a6c1779c6f5f141f13bd004affa95ec2513",
+    "libil2cpp/vm/Exception.h": "dd06ff15e74fa95444ce7385ae98a699c141640ecddd0f55b734220b6fa51f3c",
+    "libil2cpp/vm/Exception.cpp": "0de44059981cd1c87301f9c86f410b5675ae6acd7a9e3eba63d6dd9dec450f55"
+  },
+  "source_tree_sha256": "99b82890b794b22fe2c93bf38fe4ffe8d11f9890af459d2067c9876ed0f78fdd",
+  "source_file_count": 1134
+}
