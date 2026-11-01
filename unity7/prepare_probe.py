@@ -20,6 +20,8 @@ def main():
     parser.add_argument("--hybridclr", type=Path, required=True,
                         help="Root of the hybridclr source repository")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--with-toolchain", action="store_true",
+                        help="Also copy the matching Unity IL2CPP tools for standalone runtime tests")
     args = parser.parse_args()
     inputs = args.unity_il2cpp.resolve()
     source = args.hybridclr.resolve() / "hybridclr"
@@ -49,10 +51,13 @@ def main():
         parser.error("libil2cpp source tree does not match the pinned Unity revision")
     shutil.copytree(inputs / "libil2cpp", output / "libil2cpp")
     shutil.copytree(inputs / "external/google", output / "external/google")
+    if args.with_toolchain:
+        shutil.copytree(inputs, output, dirs_exist_ok=True,
+                        ignore=lambda directory, names: ["libil2cpp"] if Path(directory) == inputs else [])
     shutil.copytree(source, output / "libil2cpp/hybridclr", ignore=shutil.ignore_patterns("generated"))
-    patch = patchdir / "0001-runtime-foundation.patch"
-    subprocess.run(["git", "apply", "--check", "--unidiff-zero", str(patch)], cwd=output, check=True)
-    subprocess.run(["git", "apply", "--unidiff-zero", str(patch)], cwd=output, check=True)
+    for patch in sorted(patchdir.glob("*.patch")):
+        subprocess.run(["git", "apply", "--check", "--unidiff-zero", str(patch)], cwd=output, check=True)
+        subprocess.run(["git", "apply", "--unidiff-zero", str(patch)], cwd=output, check=True)
     generated = output / "libil2cpp/hybridclr/generated"
     generated.mkdir()
     (generated / "UnityVersion.inc").write_text("#define HYBRIDCLR_UNITY_VERSION 70000000\n", encoding="utf-8")
