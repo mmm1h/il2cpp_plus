@@ -1,7 +1,7 @@
 {
   "unity_version": "7000.0.0a12",
   "revision": "8751f7c83ed7",
-  "status": "incomplete-source-port",
+  "status": "verified-android-and-ios-simulator",
   "input_sha256": {
     "libil2cpp/il2cpp-config.h": "933db656b53574ba579ce080c0756560278ee35b9da2df5a177483f2d5fd334b",
     "libil2cpp/il2cpp-class-internals.h": "6515d47df3e9d03a0aca7e21c43383329fc5784026ecf7c2dc4538f18f9b6147",
