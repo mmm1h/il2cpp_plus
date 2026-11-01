@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Prepare an incomplete Unity 7 source-port tree for compiler probes only.
+"""Prepare an exact Unity 7 source tree for isolated compiler/runtime validation.
 
 Use a licensed local Unity installation. This does not install or register a
-runtime and does not copy the Unity 6 runtime from this repository. The native
-metadata dispatch hooks are still incomplete.
+runtime and does not copy the Unity 6 runtime from this repository. It does not
+generate project-specific method bridges or install a Player SDK.
 """
 # Copyright (c) 2026 mmm1h. Licensed under the MIT license in the repository root.
 import argparse

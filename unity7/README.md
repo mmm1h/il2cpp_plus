@@ -6,6 +6,6 @@
 
 补丁保留 Unity 7 的序列化格式，在解码结果中补充解释器需要的类型、签名和 token。它们接入泛型与接口分发、反射、动态 GC 根、程序集注册、现代加载上下文和运行时清理。解释器特性构造器保留原有索引表示，AOT 特性继续使用 Unity 7 的编码索引。
 
-Win64 独立 IL2CPP 程序已成功加载并执行两版外部热更 DLL。对象编译覆盖解释器和受影响的现代运行时源码；旧 Mono BCL 的反射源码在清单中明确排除。完整验证入口和范围见 [解释器说明](https://github.com/mmm1h/hybridclr/blob/codex/unity7-support/UNITY7.md)。
+Win64 独立 IL2CPP 程序已成功加载并执行两版外部热更 DLL。现代 BCL 的对象编译覆盖解释器及受影响的运行时源码。旧 Mono BCL 另行执行源码检查，清单明确区分各配置的反射入口。完整验证入口和范围见 [解释器说明](https://github.com/mmm1h/hybridclr/blob/codex/unity7-support/UNITY7.md)。
 
-工具保留 `INCOMPLETE_PORT.json` 标记与默认编译防护，不安装或注册运行库。Unity Editor 安装及 Player 集成仍在适配，Android 和 iOS 未经构建及设备执行验证。
+工具保留 `INCOMPLETE_PORT.json` 标记与默认编译防护，不安装或注册运行库。配套工具包已验证 Windows Editor 安装、代码生成和 Win64 Player，包含默认 API 配置、AOT 补充元数据和热更泛型集合。Android 和 iOS 未经构建及设备执行验证。
